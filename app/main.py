@@ -150,7 +150,7 @@ async def startup_webhook():
         await bot_app.bot.set_webhook(WEBHOOK_URL)
         logging.info(f"Telegram webhook set: {WEBHOOK_URL}")
 
-]
+
 if name == "main":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)  
