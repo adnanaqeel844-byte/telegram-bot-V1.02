@@ -63,7 +63,6 @@ async def download_recording(url, filename):
             f.write(response.content)
         logging.info(f"Recording saved: {filepath}")
 
-Nawab Mental, [9/29/25 12:45 AM]
 send_alert(f"Recording saved: {filepath}")
         # Summarize with xAI
         summary = await query_xai(f"Transcribe and summarize this call recording: {filepath}")
@@ -110,4 +109,5 @@ async def text_to_speech(text):
 
 # Rate limiter
 rate_limiter = RateLimiter(times=RATE_LIMIT_REQUESTS, seconds=RATE_LIMIT_WINDOW)
-rate_limiter = RateLimiter(times=RATE_LIMIT_REQUESTS, seconds=RATE_LIMIT_WI
+rate_limiter = RateLimiter(times=RATE_LIMIT_REQUESTS, seconds=RATE_LIMIT_WINDOW)
+
