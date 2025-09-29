@@ -60,7 +60,6 @@ async def whatsapp_webhook(request: Request):
         send_alert(f"WhatsApp webhook error: {e}")
         return {"status": "error"}
 
-Nawab Mental, [9/29/25 12:45 AM]
 # Tasker endpoint (updated for recording)
 @app.post("/tasker", dependencies=[rate_limiter])
 async def tasker_endpoint(request: Request, authorization: str = Header(None)):
@@ -154,8 +153,5 @@ async def startup_webhook():
 ]
 if name == "main":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
-  
+    uvicorn.run(app, host="0.0.0.0", port=8000)  
 
-  
-    uvicorn.run(app, host="0.
