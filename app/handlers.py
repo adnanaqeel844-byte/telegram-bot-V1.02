@@ -45,7 +45,6 @@ async def handle_voice(update, _):
     else:
         await update.message.reply_text("Failed to download voice!")
 
-Nawab Mental, [9/29/25 12:45 AM]
 async def handle_video_call(update, _):
     user_id = update.effective_user.id
     logging.info(f"Video call request from {user_id}")
