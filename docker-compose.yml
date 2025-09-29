@@ -1,0 +1,35 @@
+version: '3.8'
+services:
+  bot:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - WEBHOOK_URL=${WEBHOOK_URL}
+      - DISCORD_WEBHOOK_URL=${DISCORD_WEBHOOK_URL}
+      - XAI_API_KEY=${XAI_API_KEY}
+      - TASKER_SECRET=${TASKER_SECRET}
+      - WHATSAPP_VERIFY_TOKEN=${WHATSAPP_VERIFY_TOKEN}
+      - WHATSAPP_ACCESS_TOKEN=${WHATSAPP_ACCESS_TOKEN}
+      - WHATSAPP_PHONE_NUMBER_ID=${WHATSAPP_PHONE_NUMBER_ID}
+      - RATE_LIMIT_REQUESTS=${RATE_LIMIT_REQUESTS:-60}
+      - RATE_LIMIT_WINDOW=${RATE_LIMIT_WINDOW:-60}
+      - ELEVENLABS_API_KEY=${ELEVENLABS_API_KEY}
+      - JITSI_DOMAIN=${JITSI_DOMAIN:-meet.jit.si}
+      - RECORDINGS_PATH=/app/recordings  # New: Container path
+    restart: unless-stopped
+    volumes:
+      - ./logs:/app/logs
+      - ./recordings:/app/recordings  # New: Persist recordings
+    healthcheck:
+      test: curl -f http://localhost:8000/health
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    depends_on:
+      - redis
+  redis:
+    image: redis:7.0
+    ports:
+      - "6379:6379"
