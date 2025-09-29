@@ -13,7 +13,6 @@ async def initiate_telegram_video_call(user_id, chat_history="", record=False):
     logging.info(f"Telegram video call link for {user_id}: {link} | Record: {record} | Context: {context}")
     return f"{context}\nJoin (recording enabled): {link}"
 
-Nawab Mental, [9/29/25 12:45 AM]
 # Create WhatsApp video call with recording
 async def create_whatsapp_call(callee_phone, call_type="video", record=False):
     headers = {"Authorization": f"Bearer {WHATSAPP_ACCESS_TOKEN}", "Content-Type": "application/json"}
